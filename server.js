@@ -24,12 +24,13 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintenance.hbs', {
-        pageTitle: 'Maintenance In Progress',
-        messageText: 'The site is currently under the maintenance. Please check back later'
-    });
-});
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs', {
+//         pageTitle: 'Maintenance In Progress',
+//         messageText: 'The site is currently under the maintenance. Please check back later'
+//     });
+//     next();
+// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -50,6 +51,12 @@ app.get('/about', (req, res) => {
 app.get('/bad', (req, res) => {
     res.send({
         errorMessage: 'Unable to fulfill this request'
+    });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Portfolio Page'
     });
 });
 
